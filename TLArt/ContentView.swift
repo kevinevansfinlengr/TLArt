@@ -18,15 +18,35 @@ struct ContentView: View {
             .scaledToFit()
             .padding()
             
-            Button(action: {
-                if imageNumber == 4 {
-                    imageNumber = 1
-                } else {
-                    imageNumber += 1
-                }
-            }, label: {
-                Text("Next")
-            })
+            HStack {
+                
+                Button(action: {
+                    if imageNumber == 1 {
+                        imageNumber = 7
+                    } else {
+                        imageNumber -= 1
+                    }
+                }, label: {
+                    VStack {
+                        Text("Back")
+                        Image(systemName: "arrow.left.circle.fill")
+                    }
+                })
+                
+                Button(action: {
+                    if imageNumber == 7 {
+                        imageNumber = 1
+                    } else {
+                        imageNumber += 1
+                    }
+                }, label: {
+                    VStack {
+                        Text("Forward")
+                        Image(systemName: "arrow.right.circle.fill")
+                    }
+                })
+                
+            }
         }
     }
 }
