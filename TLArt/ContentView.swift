@@ -10,15 +10,25 @@ import SwiftUI
 struct ContentView: View {
     
     @State var imageNumber = 1
+    private var text = ["Space Dream Fantasy", "Blue Delight", "Crystal Blue Persuasion", "Heaven's Dream", "Orange Blossom Special", "The Phoenix", "Waltz of the Flowers"]
     
     var body: some View {
         VStack {
+            
+            Text("The Art of Teresa Lederer")
+                .font(.headline)
+                .fontWeight(.bold)
+                .padding()
             Image("card" + String(imageNumber))
                 .resizable()
             .scaledToFit()
             .padding()
             
-            HStack {
+            Text(text[imageNumber - 1])
+                .font(.headline)
+                .padding()
+            
+            HStack(alignment: .bottom) {
                 
                 Button(action: {
                     if imageNumber == 1 {
@@ -45,6 +55,8 @@ struct ContentView: View {
                         Image(systemName: "arrow.right.circle.fill")
                     }
                 })
+                
+                
                 
             }
         }
