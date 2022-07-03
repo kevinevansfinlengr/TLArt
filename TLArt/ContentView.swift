@@ -13,51 +13,58 @@ struct ContentView: View {
     private var text = ["Space Dream Fantasy", "Blue Delight", "Crystal Blue Persuasion", "Heaven's Dream", "Orange Blossom Special", "The Phoenix", "Waltz of the Flowers"]
     
     var body: some View {
-        VStack {
+        ZStack {
+            Color.purple
+                .ignoresSafeArea()
+                .blur(radius: 10.0)
             
-            Text("The Art of Teresa Lederer")
-                .font(.headline)
-                .fontWeight(.bold)
+            VStack {
+                
+                Text("The Art of Teresa Lederer")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .padding()
+                Image("card" + String(imageNumber))
+                    .resizable()
+                .scaledToFit()
                 .padding()
-            Image("card" + String(imageNumber))
-                .resizable()
-            .scaledToFit()
-            .padding()
-            
-            Text(text[imageNumber - 1])
-                .font(.headline)
-                .padding()
-            
-            HStack(alignment: .bottom) {
                 
-                Button(action: {
-                    if imageNumber == 1 {
-                        imageNumber = 7
-                    } else {
-                        imageNumber -= 1
-                    }
-                }, label: {
-                    VStack {
-                        Text("Back")
-                        Image(systemName: "arrow.left.circle.fill")
-                    }
-                })
+                Text(text[imageNumber - 1])
+                    .font(.headline)
+                    .padding()
                 
-                Button(action: {
-                    if imageNumber == 7 {
-                        imageNumber = 1
-                    } else {
-                        imageNumber += 1
-                    }
-                }, label: {
-                    VStack {
-                        Text("Forward")
-                        Image(systemName: "arrow.right.circle.fill")
-                    }
-                })
-                
-                
-                
+                HStack(alignment: .bottom) {
+                    
+                    Button(action: {
+                        if imageNumber == 1 {
+                            imageNumber = 7
+                        } else {
+                            imageNumber -= 1
+                        }
+                    }, label: {
+                        VStack {
+                            Text("Back")
+                            Image(systemName: "arrow.left.circle.fill")
+                                
+                        }.foregroundColor(.white)
+                    })
+                    
+                    Button(action: {
+                        if imageNumber == 7 {
+                            imageNumber = 1
+                        } else {
+                            imageNumber += 1
+                        }
+                    }, label: {
+                        VStack {
+                            Text("Forward")
+                            Image(systemName: "arrow.right.circle.fill")
+                        }.foregroundColor(.white)
+                    })
+                    
+                    
+                    
+                }
             }
         }
     }
